@@ -54,7 +54,7 @@ Create a structuring element (kernel) of suitable size.
 Compare the original, opened, and closed images.
 
 ## Program
----
+
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -91,7 +91,7 @@ plt.title("Closing Operation")
 plt.axis('off')
 
 plt.show()
----
+
 
 ## Developed By
 
