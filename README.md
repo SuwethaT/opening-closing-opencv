@@ -54,63 +54,52 @@ Create a structuring element (kernel) of suitable size.
 Compare the original, opened, and closed images.
 
 ## Program
+---
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+image = np.zeros((500, 500, 3), dtype=np.uint8)
+
+font = cv2.FONT_HERSHEY_SIMPLEX
+cv2.putText(image, 'OPEN', (100, 250), font, 1, (255, 255, 255), 2, cv2.LINE_AA)
+
+kernel = np.ones((3, 3), np.uint8)
+
+opened_image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
+closed_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+
+original_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+opened_rgb = cv2.cvtColor(opened_image, cv2.COLOR_BGR2RGB)
+closed_rgb = cv2.cvtColor(closed_image, cv2.COLOR_BGR2RGB)
+
+plt.figure(figsize=(12,5))
+
+plt.subplot(1,3,1)
+plt.imshow(original_rgb)
+plt.title("Input Image with Text")
+plt.axis('off')
+
+plt.subplot(1,3,2)
+plt.imshow(opened_rgb)
+plt.title("Opening Operation")
+plt.axis('off')
+
+plt.subplot(1,3,3)
+plt.imshow(closed_rgb)
+plt.title("Closing Operation")
+plt.axis('off')
+
+plt.show()
+---
 
 ## Developed By
 
-**Name:** ____________________________
-
-**Register No:** ______________________
+**Name: Suwetha T
+**Register No: 212225040446
 
 ## Output
-
-### Original Image
-
-- The input image is displayed.
-- The image serves as the source for morphological processing.
-
-### Opening Operation
-
-- Original image is displayed.
-- Opened image is displayed.
-- Small foreground noise is removed.
-- Thin protrusions and isolated pixels are eliminated.
-- Object boundaries become smoother.
-
-### Closing Operation
-
-- Original image is displayed.
-- Closed image is displayed.
-- Small holes and gaps inside objects are filled.
-- Broken regions are connected.
-- Object boundaries become more continuous.
-
-## Applications
-
-### Opening
-
-- Noise removal in binary images.
-- Separation of connected objects.
-- Preprocessing for object detection.
-
-### Closing
-
-- Filling small holes in objects.
-- Connecting nearby components.
-- Enhancing segmented regions.
-
-## Advantages
-
-### Opening
-
-- Removes unwanted foreground noise.
-- Preserves major object structures.
-- Improves segmentation quality.
-
-### Closing
-
-- Restores object continuity.
-- Eliminates small background gaps.
-- Improves object representation.
+<img width="1171" height="382" alt="image" src="https://github.com/user-attachments/assets/7ca92087-6aeb-4cb1-b755-5b6c07b6adfa" />
 
 ## Result
 
